@@ -1,0 +1,15 @@
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\bin\Debug\net10.0\MyConsoleApp.exe
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\bin\Debug\net10.0\MyConsoleApp.deps.json
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\bin\Debug\net10.0\MyConsoleApp.runtimeconfig.json
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\bin\Debug\net10.0\MyConsoleApp.dll
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\bin\Debug\net10.0\MyConsoleApp.pdb
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\MyConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\MyConsoleApp.AssemblyInfoInputs.cache
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\MyConsoleApp.AssemblyInfo.cs
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\MyConsoleApp.csproj.CoreCompileInputs.cache
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\MyConsoleApp.sourcelink.json
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\MyConsoleApp.dll
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\refint\MyConsoleApp.dll
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\MyConsoleApp.pdb
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\MyConsoleApp.genruntimeconfig.cache
+c:\Users\carte\BYUI Classes\Fall 2026\CSE-325\HelloWorld\MyConsoleApp\obj\Debug\net10.0\ref\MyConsoleApp.dll
