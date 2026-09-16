@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\MyConsoleApp.csproj": {}
+    "C:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\MyConsoleApp.csproj": {}
   },
   "projects": {
-    "c:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\MyConsoleApp.csproj": {
+    "C:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\MyConsoleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\MyConsoleApp.csproj",
+        "projectUniqueName": "C:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\MyConsoleApp.csproj",
         "projectName": "MyConsoleApp",
-        "projectPath": "c:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\MyConsoleApp.csproj",
+        "projectPath": "C:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\MyConsoleApp.csproj",
         "packagesPath": "C:\\Users\\carte\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\obj\\",
+        "outputPath": "C:\\Users\\carte\\BYUI Classes\\Fall 2026\\CSE-325\\HelloWorld\\MyConsoleApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\carte\\AppData\\Roaming\\NuGet\\NuGet.Config"
