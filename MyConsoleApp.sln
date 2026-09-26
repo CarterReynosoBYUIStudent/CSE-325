@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWorld", "HelloWorld", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyConsoleApp", "HelloWorld\MyConsoleApp\MyConsoleApp.csproj", "{8BE22D5F-D738-4249-A91C-36411B76B0E9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mslearn-dotnet-files", "mslearn-dotnet-files", "{0852F7BB-2D29-7369-1078-60E24A03167F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mslearn-dotnet-files", "mslearn-dotnet-files\mslearn-dotnet-files\mslearn-dotnet-files.csproj", "{7223AD5F-91A7-4927-B340-247064F54A37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,11 +33,24 @@ Global
 		{8BE22D5F-D738-4249-A91C-36411B76B0E9}.Release|x64.Build.0 = Release|Any CPU
 		{8BE22D5F-D738-4249-A91C-36411B76B0E9}.Release|x86.ActiveCfg = Release|Any CPU
 		{8BE22D5F-D738-4249-A91C-36411B76B0E9}.Release|x86.Build.0 = Release|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Debug|x64.Build.0 = Debug|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Debug|x86.Build.0 = Debug|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Release|x64.ActiveCfg = Release|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Release|x64.Build.0 = Release|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Release|x86.ActiveCfg = Release|Any CPU
+		{7223AD5F-91A7-4927-B340-247064F54A37}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8BE22D5F-D738-4249-A91C-36411B76B0E9} = {0B109ED3-9D41-8170-F9ED-A7B5D7CF958D}
+		{7223AD5F-91A7-4927-B340-247064F54A37} = {0852F7BB-2D29-7369-1078-60E24A03167F}
 	EndGlobalSection
 EndGlobal
