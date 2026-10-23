@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "RyPd/v922W0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\carte\\BYUIClasses\\Fall2026\\CSE-325\\BlazorApp\\BlazorApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\carte\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.12\\microsoft.aspnetcore.app.internal.assets.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
