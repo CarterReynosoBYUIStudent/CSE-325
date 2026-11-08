@@ -1,0 +1,291 @@
+@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>Connect Four | Play a Match</PageTitle>
+
+<div class="site-shell">
+    <header class="topbar">
+        <a class="brand" href="/" aria-label="Four in a Row home">
+            <span class="brand-mark">4</span>
+            <span>FOUR <span class="brand-accent">IN A ROW</span></span>
+        </a>
+        <span class="topbar-note"><span class="live-dot"></span> LOCAL MULTIPLAYER</span>
+    </header>
+
+    <main class="game-main">
+        <section class="hero">
+            <p class="eyebrow"><span>01</span> THE CLASSIC STRATEGY GAME</p>
+            <h1>CONNECT <span>FOUR.</span></h1>
+            <p class="hero-copy">Take turns. Think ahead. Be the first to line up four.</p>
+        </section>
+
+        <div class="game-layout">
+            <section class="play-area" aria-label="Connect Four game">
+                <div class="match-bar">
+                    <div class="turn-indicator @(currentPlayer == 0 ? "red-turn" : "yellow-turn")"
+                         aria-live="polite" aria-atomic="true">
+                        <span class="turn-disc @(currentPlayer == 0 ? "red-disc" : "yellow-disc")"></span>
+                        <div>
+                            <span class="turn-label">@(winner.HasValue || isDraw ? "ROUND COMPLETE" : "NOW PLAYING")</span>
+                            <strong>@StatusMessage</strong>
+                        </div>
+                    </div>
+                    <div class="move-count">MOVE <strong>@moveCount.ToString("D2")</strong></div>
+                </div>
+
+                <div class="board-wrap">
+                    <div class="column-choices" aria-label="Choose a column">
+                        @for (var column = 0; column < Columns; column++)
+                        {
+                            var selectedColumn = column;
+                            <button class="drop-button"
+                                    @onclick="() => DropDisc(selectedColumn)"
+                                    disabled="@(winner.HasValue || isDraw || IsColumnFull(selectedColumn))"
+                                    aria-label="Drop a disc in column @(selectedColumn + 1)">
+                                <span aria-hidden="true">↓</span>
+                            </button>
+                        }
+                    </div>
+
+                    <div class="board" role="grid" aria-label="Connect Four board, six rows and seven columns">
+                        @for (var row = 0; row < Rows; row++)
+                        {
+                            @for (var column = 0; column < Columns; column++)
+                            {
+                                var cellRow = row;
+                                var cellColumn = column;
+                                var cellValue = board[cellRow, cellColumn];
+                                var discClass = cellValue switch
+                                {
+                                    0 => "red-disc",
+                                    1 => "yellow-disc",
+                                    _ => "empty-disc"
+                                };
+                                var winningClass = winningCells.Contains((cellRow, cellColumn)) ? "winning-disc" : string.Empty;
+
+                                <div class="board-cell" role="gridcell" aria-label="@CellLabel(cellRow, cellColumn)">
+                                    <span class="disc @discClass @winningClass"></span>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="board-caption">
+                    <span><span class="legend-dot red-disc"></span> RED</span>
+                    <span class="legend-divider"></span>
+                    <span><span class="legend-dot yellow-disc"></span> YELLOW</span>
+                    <span class="caption-hint">CHOOSE A COLUMN TO DROP</span>
+                </div>
+            </section>
+
+            <aside class="side-panel" aria-label="Match details">
+                <div class="players-heading">
+                    <h2>THE PLAYERS</h2>
+                    <span>FIRST TO FOUR WINS</span>
+                </div>
+
+                <section class="player-card red-player @(currentPlayer == 0 && !winner.HasValue && !isDraw ? "active-player" : string.Empty)"
+                         aria-label="Red player, @redWins wins">
+                    <div class="player-topline">
+                        <span class="player-number">01 / PLAYER</span>
+                        @if (winner == 0)
+                        {
+                            <span class="winner-tag">WINNER</span>
+                        }
+                        else if (currentPlayer == 0 && !isDraw && !winner.HasValue)
+                        {
+                            <span class="playing-tag">YOUR TURN</span>
+                        }
+                    </div>
+                    <div class="player-summary">
+                        <span class="player-disc red-disc"></span>
+                        <div class="player-name">RED <span>GOES FIRST</span></div>
+                        <div class="player-score">@redWins.ToString("D2")</div>
+                    </div>
+                </section>
+
+                <section class="player-card yellow-player @(currentPlayer == 1 && !winner.HasValue && !isDraw ? "active-player" : string.Empty)"
+                         aria-label="Yellow player, @yellowWins wins">
+                    <div class="player-topline">
+                        <span class="player-number">02 / PLAYER</span>
+                        @if (winner == 1)
+                        {
+                            <span class="winner-tag">WINNER</span>
+                        }
+                        else if (currentPlayer == 1 && !isDraw && !winner.HasValue)
+                        {
+                            <span class="playing-tag">YOUR TURN</span>
+                        }
+                    </div>
+                    <div class="player-summary">
+                        <span class="player-disc yellow-disc"></span>
+                        <div class="player-name">YELLOW <span>PLAYS SECOND</span></div>
+                        <div class="player-score">@yellowWins.ToString("D2")</div>
+                    </div>
+                </section>
+
+                <section class="how-to">
+                    <h2>HOW TO PLAY</h2>
+                    <p>Drop a disc into any open column. Connect four in a row - across, down, or diagonally - to win.</p>
+                </section>
+
+                <div class="game-actions">
+                    <button class="new-game-button" @onclick="StartNewGame">
+                        <span aria-hidden="true">↻</span> NEW GAME
+                    </button>
+                    <button class="reset-button" @onclick="ResetScores">RESET SCORES</button>
+                </div>
+            </aside>
+        </div>
+
+        <footer class="page-footer">
+            <span>NO CLOCK. NO LUCK. JUST STRATEGY.</span>
+            <span>TAKE YOUR TIME <span class="footer-star">✳</span> MAKE YOUR MOVE</span>
+        </footer>
+    </main>
+</div>
+
+@code {
+    private const int Rows = 6;
+    private const int Columns = 7;
+
+    private readonly int?[,] board = new int?[Rows, Columns];
+    private HashSet<(int Row, int Column)> winningCells = [];
+    private int currentPlayer;
+    private int moveCount;
+    private int redWins;
+    private int yellowWins;
+    private int? winner;
+    private bool isDraw;
+
+    private string StatusMessage => winner.HasValue
+        ? $"{PlayerName(winner.Value)} wins the round!"
+        : isDraw
+            ? "It's a draw!"
+            : $"{PlayerName(currentPlayer)}'s turn";
+
+    private void DropDisc(int column)
+    {
+        if (winner.HasValue || isDraw || column < 0 || column >= Columns)
+        {
+            return;
+        }
+
+        var row = Rows - 1;
+        while (row >= 0 && board[row, column].HasValue)
+        {
+            row--;
+        }
+
+        if (row < 0)
+        {
+            return;
+        }
+
+        board[row, column] = currentPlayer;
+        moveCount++;
+
+        var winningLine = FindWinningLine(row, column, currentPlayer);
+        if (winningLine.Count >= 4)
+        {
+            winner = currentPlayer;
+            winningCells = winningLine;
+
+            if (currentPlayer == 0)
+            {
+                redWins++;
+            }
+            else
+            {
+                yellowWins++;
+            }
+
+            return;
+        }
+
+        if (moveCount == Rows * Columns)
+        {
+            isDraw = true;
+            return;
+        }
+
+        currentPlayer = 1 - currentPlayer;
+    }
+
+    private HashSet<(int Row, int Column)> FindWinningLine(int row, int column, int player)
+    {
+        (int Row, int Column)[] directions =
+        [
+            (0, 1),
+            (1, 0),
+            (1, 1),
+            (1, -1)
+        ];
+
+        foreach (var (rowStep, columnStep) in directions)
+        {
+            var line = new HashSet<(int Row, int Column)> { (row, column) };
+            AddMatchingDiscs(line, row, column, rowStep, columnStep, player);
+            AddMatchingDiscs(line, row, column, -rowStep, -columnStep, player);
+
+            if (line.Count >= 4)
+            {
+                return line;
+            }
+        }
+
+        return [];
+    }
+
+    private void AddMatchingDiscs(
+        HashSet<(int Row, int Column)> line,
+        int row,
+        int column,
+        int rowStep,
+        int columnStep,
+        int player)
+    {
+        var nextRow = row + rowStep;
+        var nextColumn = column + columnStep;
+
+        while (nextRow >= 0 &&
+               nextRow < Rows &&
+               nextColumn >= 0 &&
+               nextColumn < Columns &&
+               board[nextRow, nextColumn] == player)
+        {
+            line.Add((nextRow, nextColumn));
+            nextRow += rowStep;
+            nextColumn += columnStep;
+        }
+    }
+
+    private bool IsColumnFull(int column) => board[0, column].HasValue;
+
+    private string CellLabel(int row, int column) => board[row, column] switch
+    {
+        0 => $"Row {row + 1}, column {column + 1}, red",
+        1 => $"Row {row + 1}, column {column + 1}, yellow",
+        _ => $"Row {row + 1}, column {column + 1}, empty"
+    };
+
+    private static string PlayerName(int player) => player == 0 ? "Red" : "Yellow";
+
+    private void StartNewGame()
+    {
+        Array.Clear(board);
+        currentPlayer = 0;
+        moveCount = 0;
+        winner = null;
+        isDraw = false;
+        winningCells.Clear();
+    }
+
+    private void ResetScores()
+    {
+        StartNewGame();
+        redWins = 0;
+        yellowWins = 0;
+    }
+}
