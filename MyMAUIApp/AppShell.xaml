@@ -1,0 +1,11 @@
+<Shell
+    x:Class="MyMAUIApp.AppShell"
+    xmlns:local="clr-namespace:MyMAUIApp"
+    Title="MyMAUIApp">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+</Shell>
